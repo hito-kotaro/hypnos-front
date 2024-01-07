@@ -1,5 +1,13 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return <h1 className="bg-red-200">hello</h1>;
-}
+import { Box } from "@mui/material";
+
+const Page = () => {
+  return (
+    <Box className="bg-red-200">
+      <Box className="bg-green-10 h-svh">hello</Box>
+    </Box>
+  );
+};
+
+export default Page;

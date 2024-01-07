@@ -1,13 +1,11 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../ui/globals.css";
+"use client";
+import "@/ui/globals.css";
+import {
+  ThemeProvider,
+} from "@mui/material";
+import { theme } from "@/ui/muiTheme";
+import { Header } from "@/components/Header/Header";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Gussleep",
-  description: "みんなでぐっすり",
-};
 
 export default function RootLayout({
   children,
@@ -15,8 +13,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ThemeProvider theme={theme}>
+      <html lang="ja" >
+				<body className='bg-primary m-0'>
+					<Header/>
+          {children}
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }
