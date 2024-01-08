@@ -1,36 +1,33 @@
 "use client";
-import { PostMiniIcon } from "@/components/PostMiniIcon/PostMiniItem";
-import { Box, Button, Grid, Typography } from "@mui/material";
-import Avatar from "boring-avatars";
+import { ArticleListItem } from "@/components/ArticleListItem/ArticleListItem";
+import { Box, Grid, Typography } from "@mui/material";
 
-interface User {
+interface ArticleBase {
+  id: number;
   title: string;
   name: string;
   date: string;
 }
 const Page = () => {
-  const data: User[] = [
-    { title: "test", name: "kotaro", date: "2024/01/01" },
-    { title: "test", name: "kotaro", date: "2024/01/01" },
-    { title: "test", name: "kotaro", date: "2024/01/01" },
-    { title: "test", name: "kotaro", date: "2024/01/01" },
-    { title: "test", name: "kotaro", date: "2024/01/01" },
-    { title: "test", name: "kotaro", date: "2024/01/01" },
-    { title: "test", name: "kotaro", date: "2024/01/01" },
+  const data: ArticleBase[] = [
+    { id: 1, title: "test", name: "kotaro", date: "2024/01/01" },
+    { id: 2, title: "test", name: "kotaro", date: "2024/01/01" },
+    { id: 3, title: "test", name: "kotaro", date: "2024/01/01" },
+    { id: 4, title: "test", name: "kotaro", date: "2024/01/01" },
   ];
   return (
     <Box className="px-2 my-2">
+      {/*ページタイトル*/}
       <Box>
         <Typography variant="h4" className="text-text">
           最近の投稿
         </Typography>
       </Box>
-      {/*投稿一覧*/}
-      {/*記事リストアイテム*/}
 
+      {/*画面サイズxs~md時の投稿一覧*/}
       <Box className="mt-20">
         <Grid container spacing={2}>
-          {data.map((u: User, i: number) => {
+          {data.map((u: ArticleBase, i: number) => {
             return (
               <Grid
                 key={i}
@@ -39,15 +36,25 @@ const Page = () => {
                 sx={{ display: { xs: "block", md: "none" } }}
               >
                 <Box className="flex justify-center">
-                  <PostMiniIcon name={u.name} title={u.title} date={u.date} />
+                  <ArticleListItem
+                    id={u.id}
+                    title={u.title}
+                    name={u.name}
+                    date={u.date}
+                  />
                 </Box>
               </Grid>
             );
           })}
         </Grid>
 
-        <Grid container spacing={2} className="bg-sky-200">
-          {data.map((u: User, i: number) => {
+        {/*画面サイズmd~時の投稿一覧*/}
+        <Grid container spacing={2}>
+          {/*2列で表示*/}
+          {data.map((u: ArticleBase, i: number) => {
+            {
+              /*偶数要素(左の列)は右寄せ*/
+            }
             if (i % 2 === 0) {
               return (
                 <Grid
@@ -55,24 +62,35 @@ const Page = () => {
                   item
                   md={6}
                   sx={{ display: { xs: "none", md: "block" } }}
-                  className="bg-red-200"
                 >
                   <Box className="flex justify-end">
-                    <PostMiniIcon name={u.name} title={u.title} date={u.date} />
+                    <ArticleListItem
+                      id={u.id}
+                      name={u.name}
+                      title={u.title}
+                      date={u.date}
+                    />
                   </Box>
                 </Grid>
               );
             } else {
+              {
+                /*奇数要素(右の列)は左寄せ*/
+              }
               return (
                 <Grid
                   key={i}
                   item
                   md={6}
                   sx={{ display: { xs: "none", md: "block" } }}
-                  className="bg-red-200"
                 >
                   <Box className="flex justify-start">
-                    <PostMiniIcon name={u.name} title={u.title} date={u.date} />
+                    <ArticleListItem
+                      id={u.id}
+                      name={u.name}
+                      title={u.title}
+                      date={u.date}
+                    />
                   </Box>
                 </Grid>
               );
@@ -80,18 +98,6 @@ const Page = () => {
           })}
         </Grid>
       </Box>
-
-      {/*
-      <Grid container>
-        {data.map((u: User, i: number) => {
-          return (
-            <Grid key={i} item xs={6} className="bg-red-200">
-              <PostMiniIcon name={u.name} title={u.title} date={u.date} />
-            </Grid>
-          );
-        })}
-      </Grid>
-			*/}
     </Box>
   );
 };
