@@ -1,16 +1,19 @@
-import {
-  Box,
-  Button,
-  IconButton,
-} from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useRouter } from "next/navigation";
+import { FC } from "react";
 
-export const Header = () => {
+interface Props {
+  isPostEnable?: boolean;
+}
+
+export const Header: FC<Props> = (props) => {
+  const { isPostEnable } = props;
+
   const router = useRouter();
   return (
     <Box
-      className="sticky top-0 bg-white flex items-center px-2 drop-shadow rounded-b-lg"
+      className="sticky top-0 bg-white flex items-center px-2 drop-shadow rounded-b-lg "
       sx={{ height: "50px" }}
     >
       <Box className="flex-grow">
@@ -29,15 +32,19 @@ export const Header = () => {
         >
           <SearchIcon fontSize="large" />
         </IconButton>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => {
-            router.push("/post");
-          }}
-        >
-          投稿する
-        </Button>
+        {isPostEnable ? (
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              router.push("/post");
+            }}
+          >
+            投稿する
+          </Button>
+        ) : (
+          ""
+        )}
       </Box>
     </Box>
   );

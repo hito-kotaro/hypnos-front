@@ -12,13 +12,13 @@ export const MultiTemplate: FC<Props> = (props) => {
   return (
     <Grid container>
       <Grid item md={3} sx={{ display: { xs: "none", md: "block" } }}>
-        <Box className="">{childrenArray[0]}</Box>
+        <Box>{childrenArray[0]}</Box>
       </Grid>
       <Grid item xs={12} md={6}>
-        <Box className="h-screen">{childrenArray[1]}</Box>
+        <Box>{childrenArray[1]}</Box>
       </Grid>
       <Grid item md={3} sx={{ display: { xs: "none", md: "block" } }}>
-        <Box className="">{childrenArray[2]}</Box>
+        <Box>{childrenArray[2]}</Box>
       </Grid>
     </Grid>
   );
