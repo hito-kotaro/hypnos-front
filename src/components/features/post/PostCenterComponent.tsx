@@ -12,6 +12,8 @@ interface Props {
   handleNameInputHooks: TextInputHooks;
   bodyInputHooks: TextInputHooks;
   searchInputHooks: TextInputHooks;
+  itemAction: (index: number, isRemove?: boolean) => void;
+  handleSearch: (keyword: string) => void;
 }
 
 export const PostCenterComponent: FC<Props> = (props) => {
@@ -20,6 +22,8 @@ export const PostCenterComponent: FC<Props> = (props) => {
     handleNameInputHooks,
     bodyInputHooks,
     searchInputHooks,
+    itemAction,
+    handleSearch,
   } = props;
 
   return (
@@ -81,15 +85,17 @@ export const PostCenterComponent: FC<Props> = (props) => {
             return (
               <Box key={i} className="flex justify-center flex-col m-3">
                 <ItemCard
+                  index={i}
                   imageUrl={item.mediumImageUrls[0].imageUrl}
                   name={item.itemName}
                   price={item.itemPrice}
+                  itemAction={() => itemAction(i, true)}
                 />
                 <Button
                   variant="contained"
                   color="secondary"
                   className="mt-1"
-                  onClick={() => console.log(`remove ${item.itemName}`)}
+                  onClick={() => itemAction(i, true)}
                 >
                   選択解除
                 </Button>
@@ -99,7 +105,10 @@ export const PostCenterComponent: FC<Props> = (props) => {
         </Box>
         {/*アイテム検索*/}
         <Box className="mt-6">
-          <SearchField inputHooks={searchInputHooks} />
+          <SearchField
+            inputHooks={searchInputHooks}
+            handleSearch={handleSearch}
+          />
           <Box className="flex justify-center">
             <Button variant="contained" color="secondary" className="mt-3">
               楽天市場でアイテムを探す
@@ -113,9 +122,11 @@ export const PostCenterComponent: FC<Props> = (props) => {
             return (
               <Box key={i} className="flex justify-center mt-3">
                 <ItemCard
+                  index={i}
                   imageUrl={item.mediumImageUrls[0].imageUrl}
                   name={item.itemName}
                   price={item.itemPrice}
+                  itemAction={() => itemAction(i)}
                 />
               </Box>
             );

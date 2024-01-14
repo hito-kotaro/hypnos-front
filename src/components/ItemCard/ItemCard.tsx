@@ -3,17 +3,20 @@ import Image from "next/image";
 import { FC } from "react";
 
 interface Props {
+  index: number;
   imageUrl: string;
   name: string;
   price: number;
+  itemAction: (id: number, isRemove?: boolean) => void;
 }
 
 export const ItemCard: FC<Props> = (props) => {
-  const { imageUrl, name, price } = props;
+  const { index, imageUrl, name, price, itemAction } = props;
   return (
     <button
       type="button"
       className="border-none p-0 drop-shadow-lg hover:drop-shadow-none rounded-lg cursor-pointer"
+      onClick={() => itemAction(index)}
     >
       <Box sx={{ width: "265px" }} className="bg-white rounded-lg">
         {/*画像表示エリア*/}
