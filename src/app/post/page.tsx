@@ -1,14 +1,10 @@
 "use client";
-import { FlexTextField } from "@/components/FlexTextField/FlexTextField";
 import { Header } from "@/components/Header/Header";
-import { ItemCard } from "@/components/ItemCard/ItemCard";
-import { SearchField } from "@/components/SearchField/SearchField";
-import { PostCenterComponent } from "@/components/features/post/PostCenterConponent";
+import { PostCenterComponent } from "@/components/features/post/PostCenterComponent";
+import { PostLeftComponent } from "@/components/features/post/PostLeftComponent";
 import { useTextInput } from "@/hooks/useTextInput";
-import { rakutenItemsMock } from "@/mock/rakutenItemMock";
 import { MultiTemplate } from "@/templates/MultiTemplate";
-import { RakutenItemBase } from "@/types/rakutenItem";
-import { Box, Button, Link, TextField } from "@mui/material";
+import { Box } from "@mui/material";
 
 export default function Home() {
   const titleInputHooks = useTextInput();
@@ -21,7 +17,10 @@ export default function Home() {
     <>
       <Header />
       <MultiTemplate>
-        <Box className="bg-red-200">L</Box>
+        {/*左コンテンツ*/}
+        <Box className="px-2">
+          <PostLeftComponent searchInputHooks={searchInputHooks} />
+        </Box>
         <Box className="px-2">
           {/*中央コンテンツ*/}
           <PostCenterComponent
