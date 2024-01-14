@@ -14,7 +14,7 @@ export const PostLeftComponent: FC<Props> = (props) => {
   const { searchInputHooks } = props;
 
   return (
-    <Box className="my-2">
+    <Box className="">
       <Box>
         <SearchField inputHooks={searchInputHooks} />
         <Button variant="contained" color="secondary" className="mt-3">

@@ -24,7 +24,7 @@ export const PostCenterComponent: FC<Props> = (props) => {
 
   return (
     <>
-      <Box className="flex justify-between items-center my-2">
+      <Box className="flex justify-between items-center">
         {/*コンテンツヘッダ*/}
         <Link href="/" underline="none" className="text-gray-800">
           投稿をやめる
