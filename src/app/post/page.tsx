@@ -45,8 +45,10 @@ export default function Home() {
             handleNameInputHooks={handleNameInputHooks}
             bodyInputHooks={bodyInputHooks}
             searchInputHooks={searchInputHooks}
-						itemAction={itemListHooks.itemAction}
-						handleSearch={handleSearch}
+            itemAction={itemListHooks.itemAction}
+            handleSearch={handleSearch}
+            rakutenItemList={itemListHooks.itemList}
+            selectedItemList={itemListHooks.selectedItemList}
           />
         </Box>
         {/*右コンテンツ*/}

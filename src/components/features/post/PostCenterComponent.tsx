@@ -8,6 +8,8 @@ import { Box, Button, Link, TextField } from "@mui/material";
 import { FC } from "react";
 
 interface Props {
+  rakutenItemList: RakutenItemBase[];
+  selectedItemList: RakutenItemBase[];
   titleInputHooks: TextInputHooks;
   handleNameInputHooks: TextInputHooks;
   bodyInputHooks: TextInputHooks;
@@ -18,6 +20,8 @@ interface Props {
 
 export const PostCenterComponent: FC<Props> = (props) => {
   const {
+    rakutenItemList,
+    selectedItemList,
     titleInputHooks,
     handleNameInputHooks,
     bodyInputHooks,
@@ -80,7 +84,7 @@ export const PostCenterComponent: FC<Props> = (props) => {
       <Box sx={{ display: { xs: "block", lg: "none" } }}>
         {/*選択済みアイテム表示*/}
         <Box className="mt-6 w-full flex overflow-x-scroll">
-          {rakutenItemsMock.map((r: RakutenItemBase, i: number) => {
+          {selectedItemList.map((r: RakutenItemBase, i: number) => {
             const item = r.Item;
             return (
               <Box key={i} className="flex justify-center flex-col m-3">
@@ -117,7 +121,7 @@ export const PostCenterComponent: FC<Props> = (props) => {
         </Box>
         {/*検索結果表示エリア*/}
         <Box>
-          {rakutenItemsMock.map((r: RakutenItemBase, i: number) => {
+          {rakutenItemList.map((r: RakutenItemBase, i: number) => {
             const item = r.Item;
             return (
               <Box key={i} className="flex justify-center mt-3">
