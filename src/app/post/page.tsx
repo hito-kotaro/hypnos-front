@@ -43,22 +43,22 @@ export default function Home() {
           </Box>
 
           {/*文字入力*/}
-          <Box>
-            <Box>
+          <Box className="mt-6">
+            <Box className="mt-3">
               <FlexTextField
                 size="large"
                 placeholder="タイトルを入力"
                 inputHooks={titleInputHooks}
               />
             </Box>
-            <Box>
+            <Box className="mt-3">
               <FlexTextField
                 size="medium"
                 placeholder="ハンドルネームを入力"
                 inputHooks={handleNameInputHooks}
               />
             </Box>
-            <Box>
+            <Box className="mt-3">
               <TextField
                 variant="outlined"
                 multiline
@@ -70,29 +70,56 @@ export default function Home() {
               />
             </Box>
           </Box>
-          {/*アイテム検索*/}
-          <Box className='mt-6'>
-						<Box className='flex flex-col justify-center'>
-            <SearchField inputHooks={searchInputHooks} />
-            <Button variant="contained" color="secondary" className='mt-3'>
-              楽天市場でアイテムを探す
-            </Button>
-						</Box>
-          </Box>
-          {/*検索結果表示エリア*/}
-          <Box>
-            {rakutenItemsMock.map((r: RakutenItemBase, i: number) => {
-              const item = r.Item;
-              return (
-                <Box key={i} className="flex justify-center mt-3">
-                  <ItemCard
-                    imageUrl={item.mediumImageUrls[0].imageUrl}
-                    name={item.itemName}
-                    price={item.itemPrice}
-                  />
-                </Box>
-              );
-            })}
+
+          {/*画面サイズによって消えるエリア*/}
+          <Box sx={{ display: { xs: "block", lg: "none" } }}>
+            {/*選択済みアイテム表示*/}
+            <Box className="mt-6 w-full flex overflow-x-scroll">
+              {rakutenItemsMock.map((r: RakutenItemBase, i: number) => {
+                const item = r.Item;
+                return (
+                  <Box key={i} className="flex justify-center flex-col m-3">
+                    <ItemCard
+                      imageUrl={item.mediumImageUrls[0].imageUrl}
+                      name={item.itemName}
+                      price={item.itemPrice}
+                    />
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      className="mt-1"
+                      onClick={() => console.log(`remove ${item.itemName}`)}
+                    >
+                      選択解除
+                    </Button>
+                  </Box>
+                );
+              })}
+            </Box>
+            {/*アイテム検索*/}
+            <Box className="mt-6">
+              <SearchField inputHooks={searchInputHooks} />
+              <Box className="flex justify-center">
+                <Button variant="contained" color="secondary" className="mt-3">
+                  楽天市場でアイテムを探す
+                </Button>
+              </Box>
+            </Box>
+            {/*検索結果表示エリア*/}
+            <Box>
+              {rakutenItemsMock.map((r: RakutenItemBase, i: number) => {
+                const item = r.Item;
+                return (
+                  <Box key={i} className="flex justify-center mt-3">
+                    <ItemCard
+                      imageUrl={item.mediumImageUrls[0].imageUrl}
+                      name={item.itemName}
+                      price={item.itemPrice}
+                    />
+                  </Box>
+                );
+              })}
+            </Box>
           </Box>
         </Box>
         <Box className="bg-blue-200">M</Box>
