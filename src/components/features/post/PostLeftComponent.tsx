@@ -31,13 +31,18 @@ export const PostLeftComponent: FC<Props> = (props) => {
             const item = r.Item;
             return (
               <Box key={i} className="flex justify-center mt-3">
-                <ItemCard
-                  index={i}
-                  imageUrl={item.mediumImageUrls[0].imageUrl}
-                  name={item.itemName}
-                  price={item.itemPrice}
-                  itemAction={addItem}
-                />
+                <button
+                  type="button"
+                  className="border-none p-0 drop-shadow-lg hover:drop-shadow-none rounded-lg cursor-pointer"
+                  onClick={() => addItem(i)}
+                >
+                  <ItemCard
+                    index={i}
+                    imageUrl={item.mediumImageUrls[0].imageUrl}
+                    name={item.itemName}
+                    price={item.itemPrice}
+                  />
+                </button>
               </Box>
             );
           })}

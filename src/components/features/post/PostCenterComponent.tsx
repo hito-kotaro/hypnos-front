@@ -2,7 +2,6 @@ import { FlexTextField } from "@/components/FlexTextField/FlexTextField";
 import { ItemCard } from "@/components/ItemCard/ItemCard";
 import { SearchField } from "@/components/SearchField/SearchField";
 import { TextInputHooks } from "@/hooks/useTextInput";
-import { rakutenItemsMock } from "@/mock/rakutenItemMock";
 import { RakutenItemBase } from "@/types/rakutenItem";
 import { Box, Button, Link, TextField } from "@mui/material";
 import { FC } from "react";
@@ -93,7 +92,6 @@ export const PostCenterComponent: FC<Props> = (props) => {
                   imageUrl={item.mediumImageUrls[0].imageUrl}
                   name={item.itemName}
                   price={item.itemPrice}
-                  itemAction={() => itemAction(i, true)}
                 />
                 <Button
                   variant="contained"
@@ -125,13 +123,18 @@ export const PostCenterComponent: FC<Props> = (props) => {
             const item = r.Item;
             return (
               <Box key={i} className="flex justify-center mt-3">
-                <ItemCard
-                  index={i}
-                  imageUrl={item.mediumImageUrls[0].imageUrl}
-                  name={item.itemName}
-                  price={item.itemPrice}
-                  itemAction={() => itemAction(i)}
-                />
+                <button
+                  type="button"
+                  className="border-none p-0 drop-shadow-lg hover:drop-shadow-none rounded-lg cursor-pointer"
+                  onClick={() => itemAction(i)}
+                >
+                  <ItemCard
+                    index={i}
+                    imageUrl={item.mediumImageUrls[0].imageUrl}
+                    name={item.itemName}
+                    price={item.itemPrice}
+                  />
+                </button>
               </Box>
             );
           })}
