@@ -5,3 +5,12 @@ export interface ArticleBase {
   createdAt: string;
 }
 
+export interface Comment {
+  id: number;
+  handleName: string;
+  body: string;
+}
+
+export interface ArticleDetail extends ArticleBase {
+  comments: Comment[];
+}

@@ -20,7 +20,7 @@ export const CenterComponent = () => {
       </Box>
 
       {/*本文*/}
-      <Box>
+      <Box className="mt-6">
         {/*ハンドルネーム*/}
         <Box className="flex items-center">
           <Box>
@@ -34,7 +34,7 @@ export const CenterComponent = () => {
         </Box>
 
         {/*本文*/}
-        <Box>
+        <Box className="mt-3">
           <Typography variant="body1" className="text-text">
             ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
             ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。

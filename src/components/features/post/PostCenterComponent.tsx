@@ -88,7 +88,6 @@ export const PostCenterComponent: FC<Props> = (props) => {
             return (
               <Box key={i} className="flex justify-center flex-col m-3">
                 <ItemCard
-                  index={i}
                   imageUrl={item.mediumImageUrls[0].imageUrl}
                   name={item.itemName}
                   price={item.itemPrice}

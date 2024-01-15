@@ -32,7 +32,7 @@ const Page = () => {
                     <ArticleListItem
                       id={a.id}
                       title={a.title}
-                      name={a.author}
+                      name={a.handleName}
                       date={a.createdAt}
                     />
                   </Box>
@@ -59,7 +59,7 @@ const Page = () => {
                     <Box className="flex justify-end">
                       <ArticleListItem
                         id={a.id}
-                        name={a.author}
+                        name={a.handleName}
                         title={a.title}
                         date={a.createdAt}
                       />
@@ -80,7 +80,7 @@ const Page = () => {
                     <Box className="flex justify-start">
                       <ArticleListItem
                         id={a.id}
-                        name={a.author}
+                        name={a.handleName}
                         title={a.title}
                         date={a.createdAt}
                       />

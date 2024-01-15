@@ -1,5 +1,5 @@
 import { ItemCard } from "@/components/ItemCard/ItemCard";
-import { ItemBase, RakutenItemBase } from "@/types/rakutenItem";
+import { RakutenItemBase } from "@/types/rakutenItem";
 import { Box, Button, Typography } from "@mui/material";
 import { FC } from "react";
 
@@ -26,18 +26,15 @@ export const PostRightComponent: FC<Props> = (props) => {
               className="flex flex-col justify-center mt-3 "
             >
               <ItemCard
-                index={i}
                 imageUrl={item.mediumImageUrls[0].imageUrl}
                 name={item.itemName}
                 price={item.itemPrice}
-								itemAction={()=>removeItem(i, true)}
-
               />
               <Button
                 variant="contained"
                 color="secondary"
                 className="mt-1"
-                onClick={() => removeItem(i,true)}
+                onClick={() => removeItem(i, true)}
               >
                 選択解除
               </Button>

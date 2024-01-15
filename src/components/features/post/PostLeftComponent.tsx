@@ -37,7 +37,6 @@ export const PostLeftComponent: FC<Props> = (props) => {
                   onClick={() => addItem(i)}
                 >
                   <ItemCard
-                    index={i}
                     imageUrl={item.mediumImageUrls[0].imageUrl}
                     name={item.itemName}
                     price={item.itemPrice}
