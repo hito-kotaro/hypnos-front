@@ -9,7 +9,7 @@ const Page = () => {
   return (
     <>
       <Header isPostEnable />
-      <Box className="px-2 my-2">
+      <Box className="px-2">
         {/*ページタイトル*/}
         <Box>
           <Typography variant="h4" className="text-text">
