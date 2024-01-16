@@ -1,7 +1,7 @@
 export interface ArticleBase {
   id: number;
   title: string;
-  author: string;
+  handleName: string;
   createdAt: string;
 }
 
