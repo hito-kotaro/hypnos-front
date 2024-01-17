@@ -12,6 +12,7 @@ export const articleSummaryMock: ArticleBase[] = [
 export const articlesMock: ArticleDetail = {
   id: 1,
   title: "test",
+	body: "ここに本文が入ります。マークダウンな表示にしたいな。改行とかどうしよう。",
   handleName: "kotaro",
   comments: [
     {
@@ -35,5 +36,6 @@ export const articlesMock: ArticleDetail = {
       body: "ここにコメントが入ります。いいコメントだといいな",
     },
   ],
+  itemCodes: ["33taiyo:10000020", "33taiyo:10000020"],
   createdAt: "2024/01/01",
 };

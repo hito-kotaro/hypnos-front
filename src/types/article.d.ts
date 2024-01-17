@@ -12,5 +12,7 @@ export interface Comment {
 }
 
 export interface ArticleDetail extends ArticleBase {
+  body: string;
+  itemCodes: string[];
   comments: Comment[];
 }

@@ -1,16 +1,24 @@
+import { ArticleDetail } from "@/types/article";
 import { Box, Typography } from "@mui/material";
 import Avatar from "boring-avatars";
+import { FC } from "react";
 
-export const CenterComponent = () => {
+interface Props {
+  article: ArticleDetail;
+}
+
+export const CenterComponent: FC<Props> = (props) => {
+  const { article } = props;
+
   return (
     <Box>
       {/*タイトル*/}
       <Box className="text-center">
         <Typography variant="h4" className="font-semibold text-text">
-          タイトル
+          {article.title}
         </Typography>
         <Typography variant="h5" className="text-text">
-          2024/01/01に投稿
+          {`${article.createdAt}に投稿`}
         </Typography>
       </Box>
 
@@ -24,11 +32,11 @@ export const CenterComponent = () => {
         {/*ハンドルネーム*/}
         <Box className="flex items-center">
           <Box>
-            <Avatar variant="beam" name="HandleName" />
+            <Avatar variant="beam" name={article.handleName}/>
           </Box>
           <Box className="ml-3">
             <Typography variant="h5" className="font-semibold text-text">
-              HandleName
+							{article.handleName}
             </Typography>
           </Box>
         </Box>
@@ -36,20 +44,7 @@ export const CenterComponent = () => {
         {/*本文*/}
         <Box className="mt-3">
           <Typography variant="body1" className="text-text">
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
-            ここに本文が入ります。いい感じのところで折り返してくれると嬉しいな。
+						{article.body}
           </Typography>
         </Box>
       </Box>
