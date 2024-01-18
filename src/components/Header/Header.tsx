@@ -13,7 +13,7 @@ export const Header: FC<Props> = (props) => {
   const router = useRouter();
   return (
     <Box
-      className="z-10 fixed w-screen bg-white flex items-center drop-shadow"
+      className="z-10 sticky top-0 bg-white flex items-center drop-shadow px-3"
       sx={{ height: "50px" }}
     >
       <Box className="flex-grow">
