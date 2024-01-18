@@ -21,6 +21,8 @@ export const PostLeftComponent: FC<Props> = (props) => {
         <SearchField
           inputHooks={searchInputHooks}
           handleSearch={handleSearch}
+					placeholder="アイテム名を入力"
+          buttonLabel="楽天でアイテムを検索"
         />
       </Box>
       {rakutenItems.length === 0 ? (

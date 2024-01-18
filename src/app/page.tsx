@@ -8,7 +8,7 @@ import { Box, Grid, Typography } from "@mui/material";
 const Page = () => {
   return (
     <>
-      <Header isPostEnable />
+      <Header isPostEnable isSearchEnable />
       <Box className="px-2">
         {/*ページタイトル*/}
         <Box>

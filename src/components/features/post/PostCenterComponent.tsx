@@ -128,7 +128,6 @@ export const PostCenterComponent: FC<Props> = (props) => {
                   onClick={() => itemAction(i)}
                 >
                   <ItemCard
-                    index={i}
                     imageUrl={item.mediumImageUrls[0].imageUrl}
                     name={item.itemName}
                     price={item.itemPrice}

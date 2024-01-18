@@ -6,17 +6,19 @@ import { FC } from "react";
 interface Props {
   inputHooks: TextInputHooks;
   handleSearch: (keyword: string) => void;
+	placeholder:string;
+  buttonLabel: string;
 }
 
 export const SearchField: FC<Props> = (props) => {
-  const { inputHooks, handleSearch } = props;
+  const { inputHooks, handleSearch,placeholder, buttonLabel } = props;
   return (
     <>
       <Box className="bg-white rounded-full flex items-center">
         <SearchIcon fontSize="large" className="text-text" />
         <input
           type="text"
-          placeholder="アイテム名を入力"
+          placeholder={placeholder}
           value={inputHooks.value}
           onChange={inputHooks.handleChange}
           className="h-10 w-full text-xl text-text border-none focus:outline-none rounded-r-full"
@@ -33,7 +35,7 @@ export const SearchField: FC<Props> = (props) => {
           inputHooks.clearValue();
         }}
       >
-        楽天でアイテムを検索
+				{buttonLabel}
       </Button>
     </>
   );

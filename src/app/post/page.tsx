@@ -21,8 +21,7 @@ export default function Home() {
       <Header />
       <MultiTemplate>
         {/*左コンテンツ*/}
-        <Box className="h-screen overflow-y-scroll px-2">
-          <Box sx={{ height: "55px" }} />
+        <Box className="px-2">
           <PostLeftComponent
             searchInputHooks={searchInputHooks}
             handleSearch={itemListHooks.handleSearch}
@@ -32,7 +31,6 @@ export default function Home() {
         </Box>
         <Box className=" px-2">
           {/*中央コンテンツ*/}
-          <Box sx={{ height: "55px" }} />
           <PostCenterComponent
             rakutenItemList={itemListHooks.itemList}
             selectedItemList={itemListHooks.selectedItemList}
@@ -45,8 +43,7 @@ export default function Home() {
           />
         </Box>
         {/*右コンテンツ*/}
-        <Box className="h-screen overflow-y-scroll px-2">
-          <Box sx={{ height: "55px" }} />
+        <Box className="px-2">
           <PostRightComponent
             items={itemListHooks.selectedItemList}
             removeItem={itemListHooks.itemAction}

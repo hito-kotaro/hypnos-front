@@ -5,15 +5,16 @@ import { FC } from "react";
 
 interface Props {
   isPostEnable?: boolean;
+  isSearchEnable?: boolean;
 }
 
 export const Header: FC<Props> = (props) => {
-  const { isPostEnable } = props;
+  const { isPostEnable, isSearchEnable } = props;
 
   const router = useRouter();
   return (
     <Box
-      className="z-10 sticky top-0 bg-white flex items-center drop-shadow px-3"
+      className="mb-5 z-10 sticky top-0 bg-white flex items-center drop-shadow px-3"
       sx={{ height: "50px" }}
     >
       <Box className="flex-grow">
@@ -25,13 +26,18 @@ export const Header: FC<Props> = (props) => {
         </Box>
       </Box>
       <Box>
-        <IconButton
-          onClick={() => {
-            router.push("/search");
-          }}
-        >
-          <SearchIcon fontSize="large" />
-        </IconButton>
+        {isSearchEnable ? (
+          <IconButton
+            onClick={() => {
+              router.push("/search");
+            }}
+          >
+            <SearchIcon fontSize="large" />
+          </IconButton>
+        ) : (
+          ""
+        )}
+
         {isPostEnable ? (
           <Button
             variant="contained"
