@@ -22,6 +22,12 @@ export const useItemList = () => {
     setSelectedItemList(newSelectedItemList);
   };
 
+  const handleSearch = async (keyword: string) => {
+    const url = `https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601?format=json&keyword=${keyword}&affiliateId=352bd4f5.1c6fc0ac.352bd4f6.8adb50fc&applicationId=1047556559373479761`;
+    const result = await fetch(url).then((r) => r.json());
+    setItemList(result.Items);
+  };
+
   const itemAction = (index: number, isRemove?: boolean) => {
     if (isRemove) {
       removeItem(index);
@@ -29,5 +35,5 @@ export const useItemList = () => {
       addItem(index);
     }
   };
-  return { selectedItemList, itemList, setItemList, itemAction };
+  return { selectedItemList, itemList, setItemList, itemAction, handleSearch };
 };

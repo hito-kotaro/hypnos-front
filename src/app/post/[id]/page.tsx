@@ -22,7 +22,7 @@ export default function Page() {
         {/*中央コンポーネント*/}
         <Box className="h-screen overflow-y-scroll px-2">
           <Box sx={{ height: "55px" }} />
-          <CenterComponent article={articlesMock} />
+          <CenterComponent article={articlesMock} items={rakutenItemsMock} />
         </Box>
         {/*右コンポーネント*/}
         <Box className="h-screen overflow-y-scroll px-2">

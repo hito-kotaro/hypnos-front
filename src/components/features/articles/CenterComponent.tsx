@@ -1,14 +1,17 @@
+import { ItemCard } from "@/components/ItemCard/ItemCard";
 import { ArticleDetail } from "@/types/article";
-import { Box, Typography } from "@mui/material";
+import { RakutenItemBase } from "@/types/rakutenItem";
+import { Box, Link, Typography } from "@mui/material";
 import Avatar from "boring-avatars";
 import { FC } from "react";
 
 interface Props {
   article: ArticleDetail;
+  items: RakutenItemBase[];
 }
 
 export const CenterComponent: FC<Props> = (props) => {
-  const { article } = props;
+  const { article, items } = props;
 
   return (
     <Box>
@@ -32,11 +35,11 @@ export const CenterComponent: FC<Props> = (props) => {
         {/*ハンドルネーム*/}
         <Box className="flex items-center">
           <Box>
-            <Avatar variant="beam" name={article.handleName}/>
+            <Avatar variant="beam" name={article.handleName} />
           </Box>
           <Box className="ml-3">
             <Typography variant="h5" className="font-semibold text-text">
-							{article.handleName}
+              {article.handleName}
             </Typography>
           </Box>
         </Box>
@@ -44,8 +47,39 @@ export const CenterComponent: FC<Props> = (props) => {
         {/*本文*/}
         <Box className="mt-3">
           <Typography variant="body1" className="text-text">
-						{article.body}
+            {article.body}
           </Typography>
+        </Box>
+
+        {/*アイテム*/}
+        <Box
+          sx={{ display: { xs: "block", lg: "none" } }}
+          className="mt-6 text-center"
+        >
+          <Typography variant="h6" className="font-semibold text-text">
+            おすすめアイテム
+          </Typography>
+
+          <Box className="flex flex-col items-center">
+            {items.map((r: RakutenItemBase, index: number) => {
+              const item = r.Item;
+              return (
+                <Box key={index} className="mt-3">
+                  <Link
+                    href={r.Item.affiliateUrl}
+                    color="secondary"
+                    underline="none"
+                  >
+                    <ItemCard
+                      imageUrl={item.mediumImageUrls[0].imageUrl}
+                      name={item.itemName}
+                      price={item.itemPrice}
+                    />
+                  </Link>
+                </Box>
+              );
+            })}
+          </Box>
         </Box>
       </Box>
     </Box>

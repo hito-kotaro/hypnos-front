@@ -16,13 +16,6 @@ export default function Home() {
 
   const itemListHooks = useItemList();
 
-  const handleSearch = async (keyword: string) => {
-    const url = `https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601?format=json&keyword=${keyword}&affiliateId=352bd4f5.1c6fc0ac.352bd4f6.8adb50fc&applicationId=1047556559373479761`;
-    const result = await fetch(url).then((r) => r.json());
-    // TODO ここをuseItemListの処理で作る
-    itemListHooks.setItemList(result.Items);
-  };
-
   return (
     <>
       <Header />
@@ -32,7 +25,7 @@ export default function Home() {
           <Box sx={{ height: "55px" }} />
           <PostLeftComponent
             searchInputHooks={searchInputHooks}
-            handleSearch={handleSearch}
+            handleSearch={itemListHooks.handleSearch}
             rakutenItems={itemListHooks.itemList}
             addItem={itemListHooks.itemAction}
           />
@@ -48,7 +41,7 @@ export default function Home() {
             bodyInputHooks={bodyInputHooks}
             searchInputHooks={searchInputHooks}
             itemAction={itemListHooks.itemAction}
-            handleSearch={handleSearch}
+            handleSearch={itemListHooks.handleSearch}
           />
         </Box>
         {/*右コンテンツ*/}
