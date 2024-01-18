@@ -31,7 +31,7 @@ export const PostCenterComponent: FC<Props> = (props) => {
 
   return (
     <>
-      <Box className="flex justify-between items-center">
+      <Box className="mb-5 flex justify-between items-center">
         {/*コンテンツヘッダ*/}
         <Link href="/" underline="none" className="text-gray-800">
           投稿をやめる
@@ -109,6 +109,8 @@ export const PostCenterComponent: FC<Props> = (props) => {
           <SearchField
             inputHooks={searchInputHooks}
             handleSearch={handleSearch}
+            buttonLabel="楽天でアイテムを検索"
+            placeholder="アイテム名を入力"
           />
           <Box className="flex justify-center">
             <Button variant="contained" color="secondary" className="mt-3">
