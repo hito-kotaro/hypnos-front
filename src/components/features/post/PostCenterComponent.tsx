@@ -1,10 +1,12 @@
 import { FlexTextField } from "@/components/FlexTextField/FlexTextField";
 import { ItemCard } from "@/components/ItemCard/ItemCard";
 import { SearchField } from "@/components/SearchField/SearchField";
+import { useImage } from "@/hooks/useImage";
 import { TextInputHooks } from "@/hooks/useTextInput";
 import { RakutenItemBase } from "@/types/rakutenItem";
 import { Box, Button, Link, TextField } from "@mui/material";
-import { FC } from "react";
+import Image from "next/image";
+import { FC, useRef } from "react";
 
 interface Props {
   rakutenItemList: RakutenItemBase[];
@@ -29,6 +31,9 @@ export const PostCenterComponent: FC<Props> = (props) => {
     handleSearch,
   } = props;
 
+  const imageHooks = useImage();
+  const inputRef = useRef(null);
+
   return (
     <>
       <Box className="mb-5 flex justify-between items-center">
@@ -41,14 +46,45 @@ export const PostCenterComponent: FC<Props> = (props) => {
         </Button>
       </Box>
       {/*画像アップロード*/}
-      <Box
-        className="bg-white flex justify-center items-center rounded-lg"
-        sx={{ height: "200px" }}
-      >
-        <Button variant="contained" color="secondary">
-          画像をアップロード
-        </Button>
-      </Box>
+      {imageHooks.imageUrl ? (
+        <Box>
+          <Box sx={{ height: "400px" }} className="relative">
+            <Image
+              src={imageHooks.imageUrl}
+              alt="test"
+              className="object-contain"
+              fill
+            />
+          </Box>
+          <Box className="flex justify-center mt-3">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={imageHooks.clearImage}
+            >
+              画像を削除
+            </Button>
+          </Box>
+        </Box>
+      ) : (
+        <Box
+          className="bg-white flex justify-center items-center rounded-lg"
+          sx={{ height: "400px" }}
+        >
+          <Button component="label" variant="contained" color="secondary">
+            画像をアップロード
+            <input
+              hidden
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              ref={inputRef}
+              onChange={imageHooks.uploadImage}
+            />
+          </Button>
+        </Box>
+      )}
 
       {/*文字入力*/}
       <Box className="mt-6">
