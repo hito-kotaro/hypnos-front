@@ -7,6 +7,7 @@ import { RakutenItemBase } from "@/types/rakutenItem";
 import { Box, Button, Link, TextField } from "@mui/material";
 import Image from "next/image";
 import { FC, useRef } from "react";
+import { Tiptap } from "../editor/Tiptap/Tiptap";
 
 interface Props {
   rakutenItemList: RakutenItemBase[];
@@ -103,6 +104,9 @@ export const PostCenterComponent: FC<Props> = (props) => {
           />
         </Box>
         <Box className="mt-3">
+          <Tiptap className="bg-red-200" />
+          {/*
+
           <TextField
             variant="outlined"
             multiline
@@ -112,6 +116,7 @@ export const PostCenterComponent: FC<Props> = (props) => {
             value={bodyInputHooks.value}
             onChange={bodyInputHooks.handleChange}
           />
+					*/}
         </Box>
       </Box>
 
