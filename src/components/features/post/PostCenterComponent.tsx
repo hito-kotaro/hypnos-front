@@ -1,12 +1,13 @@
 import { FlexTextField } from "@/components/FlexTextField/FlexTextField";
 import { ItemCard } from "@/components/ItemCard/ItemCard";
 import { SearchField } from "@/components/SearchField/SearchField";
-import { useImage } from "@/hooks/useImage";
 import { TextInputHooks } from "@/hooks/useTextInput";
 import { RakutenItemBase } from "@/types/rakutenItem";
-import { Box, Button, Link, TextField } from "@mui/material";
-import Image from "next/image";
-import { FC, useRef } from "react";
+import { Box, Button, Link } from "@mui/material";
+import { FC } from "react";
+import { useTiptap } from "@/hooks/useTiptap";
+import { EditorContent } from "@tiptap/react";
+import Avatar from "boring-avatars";
 
 interface Props {
   rakutenItemList: RakutenItemBase[];
@@ -25,14 +26,12 @@ export const PostCenterComponent: FC<Props> = (props) => {
     selectedItemList,
     titleInputHooks,
     handleNameInputHooks,
-    bodyInputHooks,
     searchInputHooks,
     itemAction,
     handleSearch,
   } = props;
 
-  const imageHooks = useImage();
-  const inputRef = useRef(null);
+  const editorHooks = useTiptap();
 
   return (
     <>
@@ -45,47 +44,14 @@ export const PostCenterComponent: FC<Props> = (props) => {
           投稿する
         </Button>
       </Box>
-      {/*画像アップロード*/}
-      {imageHooks.imageUrl ? (
-        <Box>
-          <Box sx={{ height: "400px" }} className="relative">
-            <Image
-              src={imageHooks.imageUrl}
-              alt="test"
-              className="object-contain"
-              fill
-            />
-          </Box>
-          <Box className="flex justify-center mt-3">
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={imageHooks.clearImage}
-            >
-              画像を削除
-            </Button>
-          </Box>
-        </Box>
-      ) : (
-        <Box
-          className="bg-white flex justify-center items-center rounded-lg"
-          sx={{ height: "400px" }}
-        >
-          <Button component="label" variant="contained" color="secondary">
-            画像をアップロード
-            <input
-              hidden
-              type="file"
-              id="image"
-              name="image"
-              accept="image/*"
-              ref={inputRef}
-              onChange={imageHooks.uploadImage}
-            />
-          </Button>
-        </Box>
-      )}
+      {/*画像アップロード
+			<ImageUpload imageRef={imageRef} imageHooks={imageHooks}/>
+			*/}
 
+      {/*アバター表示*/}
+      <Box className="flex justify-center ">
+        <Avatar size={200} variant="beam" name={handleNameInputHooks.value} />
+      </Box>
       {/*文字入力*/}
       <Box className="mt-6">
         <Box className="mt-3">
@@ -102,16 +68,10 @@ export const PostCenterComponent: FC<Props> = (props) => {
             inputHooks={handleNameInputHooks}
           />
         </Box>
+
+        {/*本文入力欄*/}
         <Box className="mt-3">
-          <TextField
-            variant="outlined"
-            multiline
-            fullWidth
-            rows={10}
-            placeholder="本文を入力"
-            value={bodyInputHooks.value}
-            onChange={bodyInputHooks.handleChange}
-          />
+          <EditorContent editor={editorHooks.editor} />
         </Box>
       </Box>
 
