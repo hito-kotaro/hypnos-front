@@ -1,23 +1,18 @@
 import { Box } from "@mui/material";
-import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+import { EditorContent} from "@tiptap/react";
+import { FC } from "react";
 
-export const Tiptap = () => {
-  const editor = useEditor({
-    extensions: [StarterKit],
-    content: "本文を入力",
-    editorProps: {
-      attributes: {
-        class: "h-10 bg-blue-200",
-      },
-    },
-  });
+interface Props {
+	editorHooks: any	
+}
 
-  if (!editor) return null;
+export const Tiptap:FC<Props> = (props) => {
+	const {editorHooks} = props
+
+  if (!editorHooks.editor) return null;
 
   return (
     <Box>
-      <EditorContent editor={editor} className="p-0 h-10 bg-red-200" />
     </Box>
   );
 };
