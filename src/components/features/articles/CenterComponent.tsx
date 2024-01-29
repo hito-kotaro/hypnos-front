@@ -4,6 +4,7 @@ import { RakutenItemBase } from "@/types/rakutenItem";
 import { Box, Link, Typography } from "@mui/material";
 import Avatar from "boring-avatars";
 import { FC } from "react";
+import parse from "html-react-parser";
 
 interface Props {
   article: ArticleDetail;
@@ -27,7 +28,9 @@ export const CenterComponent: FC<Props> = (props) => {
 
       {/*トップ画像*/}
       <Box>
-        <Box sx={{ height: "250px" }} className="bg-white"></Box>
+        <Box className="flex justify-center ">
+          <Avatar size={200} variant="beam" name={article.handleName} />
+        </Box>
       </Box>
 
       {/*本文*/}
@@ -45,11 +48,7 @@ export const CenterComponent: FC<Props> = (props) => {
         </Box>
 
         {/*本文*/}
-        <Box className="mt-3">
-          <Typography variant="body1" className="text-text">
-            {article.body}
-          </Typography>
-        </Box>
+        <Box className="mt-3 text-text">{parse(article.body ?? "")}</Box>
 
         {/*アイテム*/}
         <Box

@@ -8,7 +8,6 @@ import { FC } from "react";
 import { useTiptap } from "@/hooks/useTiptap";
 import { EditorContent } from "@tiptap/react";
 import Avatar from "boring-avatars";
-import parse from "html-react-parser";
 
 interface Props {
   rakutenItemList: RakutenItemBase[];
@@ -33,7 +32,6 @@ export const PostCenterComponent: FC<Props> = (props) => {
   } = props;
 
   const editorHooks = useTiptap();
-  //  const displayHooks = useHTMLDisplay("<h1>hello</h1>");
 
   return (
     <>
@@ -74,7 +72,6 @@ export const PostCenterComponent: FC<Props> = (props) => {
         {/*本文入力欄*/}
         <Box className="mt-3">
           <EditorContent editor={editorHooks.editor} />
-          {parse(editorHooks.editor?.getHTML() ?? "")}
         </Box>
       </Box>
 
